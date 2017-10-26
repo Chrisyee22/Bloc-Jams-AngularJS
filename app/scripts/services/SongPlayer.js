@@ -21,7 +21,7 @@
 
           //@desc current volume of song that's playing
           //@type {percent}
-          SongPlayer.volume = null;
+          SongPlayer.volume = 80;
 
           //@desc Buzz object audio file
           // @type {Object}
@@ -58,6 +58,7 @@
                 currentBuzzObject.play();
                 song.playing = true;
               }
+
 
               //@function stopSong
               //@desc Stops song when SongPlayer.currentSong.playing = true
@@ -113,8 +114,9 @@
         SongPlayer.setCurrentTime = function(time) {
             if (currentBuzzObject) {
                 currentBuzzObject.setTime(time);
-            
+
           }
+        };
             //@function setCurrentVolume
             //@desc Set current volume of playing song
             //@param {percent} volume
@@ -130,8 +132,8 @@
           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
           currentSongIndex++;
 
-          if (currentSongIndex > 5){
-            stopSong(song);
+          if (currentSongIndex >= currentAlbum.songs.length){
+            stopSong(SongPlayer.currentSong);
 
           } else {
             var song = currentAlbum.songs[currentSongIndex];
@@ -144,7 +146,7 @@
           //         currentBuzzObject.setTime(time);
           //     }
 
-          };
+
 
         };
 
