@@ -19,9 +19,12 @@
           //@type {Number}
           SongPlayer.currentTime = null;
 
+          //@desc current volume of song that's playing
+          //@type {percent}
+          SongPlayer.volume = null;
+
           //@desc Buzz object audio file
           // @type {Object}
-
           var currentBuzzObject = null;
 
           // @fucntion setSong
@@ -104,6 +107,22 @@
           }
         };
 
+        //@function setCurrentTime
+        //@desc Set current time (in seconds) of currently playing song
+        //@param {Number} time
+        SongPlayer.setCurrentTime = function(time) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setTime(time);
+            
+          }
+            //@function setCurrentVolume
+            //@desc Set current volume of playing song
+            //@param {percent} volume
+        SongPlayer.setCurrentVolume = function(volume){
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+        }
         //@function SongPlayer.next
         //@desc plays next song when next button is clicked
         //@param {object} currentSong
@@ -120,12 +139,13 @@
             playSong(song);
 
           }
-          SongPlayer.setCurrentTime = function(time) {
-              if (currentBuzzObject) {
-                  currentBuzzObject.setTime(time);
-              }
+          // SongPlayer.setCurrentTime = function(time) {
+          //     if (currentBuzzObject) {
+          //         currentBuzzObject.setTime(time);
+          //     }
 
           };
+
         };
 
 
