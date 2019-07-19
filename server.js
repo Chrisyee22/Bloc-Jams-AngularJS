@@ -53,8 +53,8 @@ let routes = [
     }
 ]
 
-let server = new Hapi.Server();
-server.connection(connection);
+let server = new Hapi.Server(+process.env.PORT, '0.0.0.0');
+// server.connection(connection);
 
 server.register([Inert], (err) => {
     if (err) {
